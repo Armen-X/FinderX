@@ -168,14 +168,14 @@
    </li>
    <li class="nav-item">
      <form class="search-bar">
-       <input type="text" class="form-control" placeholder="Enter keywords">
+       <input type="text" class="form-control" placeholder="Enter keywords"   [(ngModel)]="searchterm"  name="query" >
         <a href="javascript:void();"><i class="icon-magnifier"></i></a>
      </form>
    </li>
    <li class="nav-item">
     <div class="btn-group float-sm-right" style="max-height: 33px;padding-left: 10px;">
-      <button type="button" class="btn btn-light waves-effect waves-light" (click)="startLoading();"> Setting</button>
-      <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split waves-effect waves-light" (click)="startSecondpage()" data-toggle="dropdown">
+      <button type="button" class="btn btn-light waves-effect waves-light" (click)="search()"> Category</button>
+      <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split waves-effect waves-light"  data-toggle="dropdown">
       <span class="caret"></span>
       </button>
       <div class="dropdown-menu">
@@ -261,39 +261,56 @@
      <!-- Breadcrumb-->
     <div class="row pt-2 pb-2">
        <div class="col-sm-9">
-       <h4 class="page-title">Home Page</h4>
-       <ol class="breadcrumb">
-           <li class="breadcrumb-item" style="color: white;">Finder-X</li>
-           <li class="breadcrumb-item" style="color: white;">Search</li>
-        </ol>
     </div>
     <div class="col-sm-3">
     </div>
     </div>
    <!-- End Breadcrumb-->
 
-    <div class="row">
+    <div *ngIf="HomeisActive" class="row">
        <div class="col-lg-12">
          <div class="card">
            <div class="card-header text-uppercase">Main Board</div>
             <div class="card-body" style="min-height: 800px;">
-              <div class="row">
+          <div class="row">
             <div class="col">
-                <div *ngFor='let items of result'>
-                    <h3 class="cust-search-heading"> <span [innerHTML]="items.htmlTitle"></span>
-                        <a href="{{items.displayLink}}"></a>
-                    </h3>
-                    <span class="cust-search-link"><a href="{{items.formattedUrl}}">{{items.formattedUrl}}</a></span>
-                    <p class="cust-search-htmlSnippet">{{items.snippet}}</p>
+                <div>
+                  <table>
+                    <thead>
+                       <tr>
+                          <th>Name</th>
+                       </tr>
+                    </thead>
+                    <tbody>
+                       <tr *ngFor="let item of result">
+                          <td><a routerLink="./result">{{ item.name }}</a></td>
+                       </tr>
+                    </tbody>
+                 </table>
                 </div>
             </div>
-        </div>
+          </div>
           <div id='include-from-outside'></div>
         </div>
       </div>
     </div>
   </div>
 <!--End Row-->
+
+<div *ngIf="!ResultisActive" class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-header text-uppercase">Main Board</div>
+       <div class="card-body" style="min-height: 800px;">
+     <div class="row">
+       <div class="col">
+           <app-result [Url]="Url"></app-result>
+       </div>
+     </div>
+   </div>
+ </div>
+</div>
+</div>
 
 <!--start overlay-->
    <div class="overlay toggle-menu"></div>
