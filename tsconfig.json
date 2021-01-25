@@ -14,9 +14,10 @@
     "target": "es2015",
     "module": "es2020",
     "lib": [
-      "es2018", 
+      "es2018",
       "dom",
-      "DOM.Iterable"
+      "DOM.Iterable",
+      "ESNext.String"
 
     ]
   }
