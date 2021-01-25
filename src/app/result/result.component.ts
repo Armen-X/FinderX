@@ -19,7 +19,28 @@ export class ResultComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges) {
     this.load();
   }
+  subload(url: string){
+    const extension  = url.substr(-3);
+    switch (extension) {
+      case 'mkv':
+        console.log('its mkv');
+        break;
+      case 'flv':
+        break;
+      case 'mp4':
+        break;
+      case 'mp3':
+      
+      case 'wav':
+        break;
+      default:
 
+        break;
+    }
+
+    this.Url = url;
+    this.load();
+  }
 
   load() {
     let links = [];
@@ -39,10 +60,9 @@ export class ResultComponent implements OnInit {
           .find('a')
           .each(function () {
             links.push(this.href);
-            titles.push(this.textContent);
+            //titles.push(this.textContent);
           });
-        console.log(JSON.stringify(titles));
-        console.log(JSON.stringify(links));
+       
       });
     }
     this.links = links;

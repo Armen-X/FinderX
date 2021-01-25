@@ -8,9 +8,9 @@
                 <th>Name</th>
              </tr>
           </thead>
-          <tbody *ngFor="let url of links">
-             <tr *ngFor="let item of titles">
-                <td><button  class="btn btn-light waves-effect waves-light">{{ item }}</button></td>
+          <tbody >
+             <tr *ngFor="let item of links">
+                <td><button (click)="subload(item)" class="btn btn-light waves-effect waves-light">{{ item }}</button></td>
              </tr>
           </tbody>
        </table>
