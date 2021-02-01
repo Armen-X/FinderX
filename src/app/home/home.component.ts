@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { forkJoin } from 'rxjs/internal/observable/forkJoin';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as $ from 'jquery'
+import { JsScriptsService } from '../js-scripts.service';
 
 
 
@@ -24,10 +25,11 @@ export class HomeComponent implements OnInit {
   ResultisActive2:boolean = true;
   loadedCharacter: {};
   Url:string;
-  constructor(private http: HttpClient,) { }
+  constructor(private http: HttpClient,private js: JsScriptsService) { }
 
-  ngOnInit() {}
-
+  ngOnInit() {
+    this.js.loadScript();
+  }
 
   search(){
     let subscriptionKey = this.apikey;
